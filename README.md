@@ -10,6 +10,9 @@ The Maven Bike Shop sales data from the Microsoft PL-300 exam study guide. This 
 
 The 2019 and 2020 files are the sales transactions files (detail tables) and the rest of these files are master files (fact tables). I used Tableau Prep to put together a data flow in order to connect all of these files and then output a single denormalized table to use as input for Tableau. 
 
+### Go back to my profile page
+[garth-c profile page] (https://github.com/garth-c)
+
 -------------------------------------------------------------------------------------------
 
 # road map for this project
@@ -77,9 +80,15 @@ Then I produce an interactive dashboard to drill down into key sales paramters t
 # link to my Tableau Public page
 All of these dashboards are available to exploring on my Tableau Public page. The interactivity is fully functional when filters are used. The link to this site is shown below.
 
+[Tableau Public page] (https://public.tableau.com/app/profile/garth.cumpston)
+
+
 Thanks for reading this
 ------------------------------------------------------------------------------------
 
+### Go back to my profile page
+[garth-c profile page] (https://github.com/garth-c)
 
+--------------------------------------------------------------------------------------
 
 -----------------------------------------------------------------------------------------
