@@ -4,7 +4,7 @@ Project description:
 Prepare some insightful data visualizations using Tableau around sales data. This will include a descriptive break down by geography, product category, customer demographics, and time. I will also include an interactive dashboard that drills down on key sales parameters as well as produce a sales forecast and then put the sales managers into the a top 3 group ranking using clustering of sales amounts. 
 
 Source data:
-The Maven Bike Shop sales data from the Microsoft PL-300 exam study guide. This is the practice data to use for someone that is studying for the Microsoft PowerBI exam. This data contains the 7 files shown below. These files have been modified from their original content slightly to make this project simpler. 
+The Maven Bike Shop sales data from the Microsoft PL-300 exam study guide. This is the practice data to use for someone that is studying for the Microsoft PowerBI exam. This data contains the 7 files shown below. These files have been modified from their original content slightly to make this project simpler and the sales data was duplicated many times in these files.  
 
 <img width="203" alt="image" src="https://github.com/garth-c/tableau/assets/138831938/6b58c355-56a4-4914-8e52-c198a359e58d">
 
@@ -28,6 +28,22 @@ The 2019 and 2020 files are the sales transactions files (detail tables) and the
 Using Tableau Prep, the sales transaction files from Maven Cycles for 2019 and 2020 are unioned together to form a new combined transaction table. Then the rest of the tables are joined to the new combined transaction table to form a super set to use for this project. 
 
 ![prep_data_flow](https://github.com/garth-c/tableau/assets/138831938/bd086ca2-40f3-4db1-aa75-6de2023abdf7)
+
+
+The data in Tableau Prep was put into a flow using a star schema approach. This approach puts a transaction or fact table at the center of the schema and then the other factor tables or master file tables are connected to it through keys. This makes the join process very simple to implement. All of the joins in this project were inner joins and there was no need to set up a snow flake schema as all of the dimension tables would join directly to the fact table. 
+
+
+![image](https://github.com/garth-c/tableau/assets/138831938/e1e2614e-08d7-4e52-b558-307766e77294)
+
+
+Below is a graphic for an inner join.
+
+![image](https://github.com/garth-c/tableau/assets/138831938/030536f8-65f4-488b-8906-edd3b5e76fa8)
+
+Below is a graphic for a snow flake schema. Since there were no subdimension tables for this project, implementing the snow flake schema was not needed.
+
+![image](https://github.com/garth-c/tableau/assets/138831938/125ffdbb-998e-4cd5-aedc-c22be6b1cd7c)
+
 
 ---------------------------------------------------------------------------------------------------------
 
