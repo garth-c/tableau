@@ -96,6 +96,8 @@ Then I produce an interactive dashboard to drill down into key sales paramters t
 # link to my Tableau Public page
 All of these dashboards are available to exploring on my Tableau Public page. The interactivity is fully functional when filters are used. The link to this site is shown below.
 
+OPEN IN A SEPARATE TAB
+
 [Tableau Public page] (https://public.tableau.com/app/profile/garth.cumpston)
 
 
