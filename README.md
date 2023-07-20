@@ -10,6 +10,8 @@ The Maven Bike Shop sales data from the Microsoft PL-300 exam study guide. This 
 
 The 2019 and 2020 files are the sales transactions files (detail tables) and the rest of these files are master files (fact tables). I used Tableau Prep to put together a data flow in order to connect all of these files and then output a single denormalized table to use as input for Tableau. 
 
+----------------------------------------------------------------------------------------
+
 ### Go back to my profile page
 [garth-c profile page] (https://github.com/garth-c)
 
