@@ -27,12 +27,12 @@ The 2019 and 2020 files are the sales transactions files (detail tables) and the
 
 # data import
 
-Using Tableau Prep, the sales transaction files from Maven Cycles for 2019 and 2020 are unioned together to form a new combined transaction table. Then the rest of the tables are joined to the new combined transaction table to form a super set to use for this project. 
+Using Tableau Prep, the sales transaction files from Maven Cycles for 2019 and 2020 are unioned together to form a new combined transaction table. Then the rest of the tables are joined (inner join) to the new combined transaction table to form a super set to use for this project. 
 
 ![prep_data_flow](https://github.com/garth-c/tableau/assets/138831938/bd086ca2-40f3-4db1-aa75-6de2023abdf7)
 
 
-The data in Tableau Prep was put into a flow using a star schema approach. This approach puts a transaction or fact table at the center of the schema and then the other factor tables or master file tables are connected to it through keys. This makes the join process very simple to implement. All of the joins in this project were inner joins and there was no need to set up a snow flake schema as all of the dimension tables would join directly to the fact table. 
+The data in Tableau Prep was put into a flow using a star schema approach. This approach puts a transaction or fact table at the center of the schema and then the other factor tables or master file tables are connected to it through joins. This makes the denormalization process very simple to implement. All of the joins in this project were inner joins and there was no need to set up a snow flake schema as all of the dimension tables would join directly to the fact table. 
 
 
 ![image](https://github.com/garth-c/tableau/assets/138831938/e1e2614e-08d7-4e52-b558-307766e77294)
@@ -92,6 +92,63 @@ The next step is to create individual workbooks in Tableau desktop that illustra
 Then I produce an interactive dashboard to drill down into key sales paramters to look for trends. 
   + management would be able to drill into sales totals by manager, country, and product to evaluate sales trends by age group, gender, and sub-category
 <img width="493" alt="image" src="https://github.com/garth-c/tableau/assets/138831938/c754d557-12c8-4e0b-98c9-ade5eda1e237">
+
+In order to produce the above data viz demonstrations, multiple formulas were needed in Tableau as well as a few data type changes.
+
+This Tableau formula converts the region number to a region name. The region number originally was imported as a numeric data type and I changed it to character data type in order to use the CASE WHEN function shown below.
+```
+region names
+//function for region names
+CASE [Region]
+    WHEN '1' then 'US Northwest'
+    WHEN '2' then 'US Northeast'
+    WHEN '3' then 'US Central'
+    WHEN '4' then 'US Southwest'
+    WHEN '5' then 'US Southeast'
+    WHEN '6' then 'Canada'
+    WHEN '7' then 'France'
+    WHEN '8' then 'Germany'
+    WHEN '9' then 'Australia'
+    WHEN '10' then 'UK'
+END
+```
+
+For the data viz around sales on a specific calendar day, a Tableau formula to extract the calendar day of the week was needed. This formula uses the DATENAME function to extract the calendar day of the week from a date typed field.
+
+```
+//extract the day of the week for sales
+DATENAME ("weekday", [Sale Date])
+```
+The same idea was applied to the sales by calendar month data viz. This however is a two part process if you want to use the actual calendar month name in a data viz. First I extracted the month number from a date typed field using DATEPART. Then I nested this formula with a conversion function to change it to a character date type using the STR function. From there I used a CASE WHEN function to associate the month number to a calendar month name.
+
+```
+//sales month extraction
+STR(DATEPART('month',[Sale Date]))
+```
+
+This is the CASE WHEN function to assign calendar month names to calendar month numbers.
+
+```
+month names
+//case for sales month names
+CASE [Sales_Month]
+    WHEN '1' THEN 'Jan'
+    WHEN '1' THEN 'Jan'
+    WHEN '2' THEN 'Feb'
+    WHEN '3' THEN 'Mar'
+    WHEN '4' THEN 'Apr'
+    WHEN '5' THEN 'May'
+    WHEN '6' THEN 'Jun'
+    WHEN '7' THEN 'Jul'
+    WHEN '8' THEN 'Aug'
+    WHEN '9' THEN 'Sep'
+    WHEN '10' THEN 'Oct'
+    WHEN '11' THEN 'Nov'
+    WHEN '12' THEN 'Dec'
+END
+```
+
+There were a few other formulas and data type conversions in this project that I didn't document here. However, these examples provide a representative flavor of formulas, calculated fields, and data transformations that are typically done using Tableau. 
 
 ---------------------------------------------------------------------------------------
 
