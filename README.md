@@ -32,13 +32,13 @@ Using Tableau Prep, the sales transaction files from Maven Cycles for 2019 and 2
 ![prep_data_flow](https://github.com/garth-c/tableau/assets/138831938/bd086ca2-40f3-4db1-aa75-6de2023abdf7)
 
 
-The data in Tableau Prep was put into a flow using a star schema approach. This approach puts a transaction or fact table at the center of the schema and then the other factor tables or master file tables are connected to it through joins. This makes the denormalization process very simple to implement. All of the joins in this project were inner joins and there was no need to set up a snow flake schema as all of the dimension tables would join directly to the fact table. 
+The data in Tableau Prep was put into a data flow using a star schema approach. This approach puts a transaction or fact table at the center of the schema and then the other fact tables or master file tables are connected to it through joins. This makes the denormalization process very simple to implement. All of the joins in this project were inner joins and there was no need to set up a snow flake schema as all of the dimension tables would join directly to the fact table. Below is a graphic depiction of a typical star schema:
 
 
 ![image](https://github.com/garth-c/tableau/assets/138831938/e1e2614e-08d7-4e52-b558-307766e77294)
 
 
-Below is a graphic for an inner join.
+Note that all of the joins in the Tableau Prep data flow were inner joins but other join types are certainly possible such as: left joins, right joins, full joins, self joins, natural joins, etc. Below is a graphic for an inner join.
 
 ![image](https://github.com/garth-c/tableau/assets/138831938/030536f8-65f4-488b-8906-edd3b5e76fa8)
 
@@ -46,6 +46,8 @@ Below is a graphic for a snow flake schema. Since there were no subdimension tab
 
 ![image](https://github.com/garth-c/tableau/assets/138831938/125ffdbb-998e-4cd5-aedc-c22be6b1cd7c)
 
+
+Lastly, Tableau has the option to process initial sql statments and initial query banding. These are sql statements that run before Tableau starts to process the data and they are able to function as data filters, set parameters, and perform many utility type functions betwen Tableau and the data source (typically a data base).
 
 ---------------------------------------------------------------------------------------------------------
 
@@ -59,10 +61,13 @@ The first step with this project is to validate that the sales total and the tra
 
 # create the various dashboards
 
-The next step is to create individual workbooks in Tableau desktop that illustrate the data visualization needed for the specific view. Then after each workbook has been created, put them into a dashboard in order to compare and contrast visualizations with the end user audience in mind. For this specific project, since it was all sales based, I focused on breaking down the sales amounts by fairly standard explanatory variables. The idea would be that management would use this breakdown to better understand:
+The next step is to create individual workbooks in Tableau desktop that illustrate the data visualization needed for the specific view. Then after each workbook has been created, put them into a dashboard in order to compare and contrast visualizations with the end user audience in mind. 
+
+For this specific project, since it was all sales based, I focused on breaking down the sales amounts by fairly standard explanatory variables. The idea would be that management would use this breakdown to better understand:
 - where the sales are coming from geographically
   + top viz shows sales by country using a map with the dot size proportional to sales levels.
   + the bottom viz shows sales by country with bars and the dotted line is the average with a shaded part as the 95% confidence interval of the average
+    + using the confidence intervals, sales by country that are significantly different are identified
   <img width="492" alt="image" src="https://github.com/garth-c/tableau/assets/138831938/c162e0f0-74cd-4636-8fd6-028a7714c26a">
 
 - what are the largest item groups in these sales
@@ -75,6 +80,7 @@ The next step is to create individual workbooks in Tableau desktop that illustra
   + the bottom viz shows sales by age group
 <img width="491" alt="image" src="https://github.com/garth-c/tableau/assets/138831938/f4dad592-05f0-4213-b6d3-f30eb47ab972">
 
+
 - what are the likely sales over the next year
 - what has been the directional trend of sales over time
 - what are the top 3 groups of sales manager by revenue
@@ -86,18 +92,19 @@ The next step is to create individual workbooks in Tableau desktop that illustra
 - what day of the week are the most sales being made
 - what month of the year are the most sales being made
   + the top viz shows the month of the year by sales and the dotted line is the average with a shaded part as the 95% confidence interval of the average
-  + the bottom viz shows the day of the week by sales and the dotted line is the average with a shaded part as the 95% confidence interval of the average   
+    + the confidence intervals provide context around the significance of these differences 
+  + the bottom viz shows the day of the week by sales and the dotted line is the average with a shaded part as the 95% confidence interval of the average
+    +  the same is true for the confidence intervals on this viz
 <img width="491" alt="image" src="https://github.com/garth-c/tableau/assets/138831938/ab34436f-4fe7-4149-b3ae-48d1e0e9bb8f">
 
 Then I produce an interactive dashboard to drill down into key sales paramters to look for trends. 
   + management would be able to drill into sales totals by manager, country, and product to evaluate sales trends by age group, gender, and sub-category
 <img width="493" alt="image" src="https://github.com/garth-c/tableau/assets/138831938/c754d557-12c8-4e0b-98c9-ade5eda1e237">
 
-In order to produce the above data viz demonstrations, multiple formulas were needed in Tableau as well as a few data type changes.
+In order to produce the above data viz demonstrations, multiple formulas were needed in Tableau as well as a few data type changes. A few examples of Tableau formulas are below.
 
 This Tableau formula converts the region number to a region name. The region number originally was imported as a numeric data type and I changed it to character data type in order to use the CASE WHEN function shown below.
 ```
-region names
 //function for region names
 CASE [Region]
     WHEN '1' then 'US Northwest'
@@ -153,7 +160,7 @@ There were a few other formulas and data type conversions in this project that I
 ---------------------------------------------------------------------------------------
 
 # link to my Tableau Public page
-All of these dashboards are available to exploring on my Tableau Public page. The interactivity is fully functional when filters are used. The link to this site is shown below.
+All of these dashboards are available to explore real time on my Tableau Public page. The interactivity within these dashboards is fully functional when filters are used. The link to this site is shown below.
 
 OPEN IN A SEPARATE TAB
 
