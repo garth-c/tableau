@@ -169,8 +169,8 @@ OPEN IN A SEPARATE TAB
 
 
 Thanks for reading this
-------------------------------------------------------------------------------------
 
+-----------------------------------------------------------------------------------
 ### Go back to my profile page
 [garth-c profile page] (https://github.com/garth-c)
 
