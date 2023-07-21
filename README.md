@@ -31,6 +31,7 @@ Using Tableau Prep, the sales transaction files from Maven Cycles for 2019 and 2
 
 ![prep_data_flow](https://github.com/garth-c/tableau/assets/138831938/bd086ca2-40f3-4db1-aa75-6de2023abdf7)
 
+Note that Tableau Prep is where a developer would perform much of the data transformation, clean up, reshaping, connecting of tables, etc. Both Tableau Prep and Tableau have the ability to connect to many data sources when the developer has the proper connection credentials. This would include a wide variety of databases, flat files, etc. 
 
 The data in Tableau Prep was put into a data flow using a star schema approach. This approach puts a transaction or fact table at the center of the schema and then the other fact tables or master file tables are connected to it through joins. This makes the denormalization process very simple to implement. All of the joins in this project were inner joins and there was no need to set up a snow flake schema as all of the dimension tables would join directly to the fact table. Below is a graphic depiction of a typical star schema:
 
