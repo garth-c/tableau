@@ -1,7 +1,9 @@
 # Tableau
 
 Project description:
-Prepare some insightful data visualizations using Tableau (desktop version only) around sales data. This will include a descriptive break down by geography, product category, customer demographics, and time. I will also include an interactive dashboard that drills down on key sales parameters as well as produce a sales forecast and then put the sales managers into the a top 3 group ranking using clustering of sales amounts. 
+In this Tableau demo project, I will present an interactive and insightful visualization of a fictitious dataset. Using Tableau, I showcase its capabilities in data exploration, analysis, and visualizations. The project begins with data preparation and cleaning, ensuring that the dataset is optimized for Tableau's integration. Utilizing Tableau's intuitive drag-and-drop interface, I create a variety of visualizations and where applicable, the statistical insight needed to provide proper context for interpretation.
+
+Specifically, I will prepare some insightful data visualizations using Tableau (desktop version only) around sales data. This will include a descriptive break down by geography, product category, customer demographics, and time. I will also include an interactive dashboard that drills down on key sales parameters as well as produce a sales forecast and then put the sales managers into the a top 3 group ranking using clustering of sales amounts. 
 
 Source data:
 The Maven Bike Shop sales data from the Microsoft PL-300 exam study guide. This is the practice data to use for someone that is studying for the Microsoft PowerBI exam. This data contains the 7 files shown below. These files have been modified from their original content slightly to make this project simpler and the sales data was duplicated many times in these files.  
