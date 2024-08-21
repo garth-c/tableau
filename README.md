@@ -5,6 +5,8 @@ In this Tableau demo project, I will present an interactive and insightful visua
 
 Specifically, I will prepare some insightful data visualizations using Tableau (desktop version only) around sales data. This will include a descriptive break down by geography, product category, customer demographics, and time. I will also include an interactive dashboard that drills down on key sales parameters as well as produce a sales forecast and then put the sales managers into the a top 3 group ranking using clustering of sales amounts. 
 
+Note that Tableau and the related products (Prep, Cloud, Server) are very capable business intelligence tools. This demo project is only a sampling of this capability. In addition, I have my Tableau Desktop Specialist certification so this demo project only represents a sliver of what I am capable of developing with Tableau.
+
 Source data:
 The Maven Bike Shop sales data from the Microsoft PL-300 exam study guide. This is the practice data to use for someone that is studying for the Microsoft PowerBI exam. This data contains the 7 files shown below. These files have been modified from their original content slightly to make this project simpler and the sales data was duplicated many times in these files.  
 
