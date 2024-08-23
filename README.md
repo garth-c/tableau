@@ -1,18 +1,24 @@
 # Tableau
 
+Business Objective:
+To analyze customer sales and customer profiles for the purpose of increasing sales to existing customers. 
+
 Project description:
-In this Tableau demo project, I will present an interactive and insightful visualization of a fictitious dataset. Using Tableau, I showcase its capabilities in data exploration, analysis, and visualizations. The project begins with data preparation and cleaning, ensuring that the dataset is optimized for Tableau's integration. Utilizing Tableau's intuitive drag-and-drop interface, I create a variety of visualizations and where applicable, the statistical insight needed to provide proper context for interpretation.
+In this Tableau demo project, I will present an interactive and insightful visualization of a fictitious dataset. Using Tableau, I showcase its capabilities in data exploration, analysis, and visualizations. The project begins with data preparation and cleaning, ensuring that the dataset is optimized for Tableau's strenghts. Utilizing Tableau's intuitive drag-and-drop interface, I create a variety of visualizations and where applicable, the statistical insight needed to provide proper context for interpretation.
 
-Specifically, I will prepare some insightful data visualizations using Tableau (desktop version only) around sales data. This will include a descriptive break down by geography, product category, customer demographics, and time. I will also include an interactive dashboard that drills down on key sales parameters as well as produce a sales forecast and then put the sales managers into the a top 3 group ranking using clustering of sales amounts. 
+Specifically, I will prepare some insightful data visualizations of customer sales data using Tableau (desktop version only). This will include a descriptive break down by geography, product category, customer demographics, and time. I will also include an interactive dashboard that drills down on key sales parameters as well as produce a sales forecast and then put the sales managers into the a top 3 group ranking using clustering of sales amounts. 
 
-Note that Tableau and the related products (Prep, Cloud, Server) are very capable business intelligence tools. This demo project is only a sampling of this capability. In addition, I have my Tableau Desktop Specialist certification so this demo project only represents a sliver of what I am capable of developing with Tableau.
+Note that Tableau and the related products (Prep, Cloud, Server) are very capable business intelligence tools. This demo project is only a sampling of this capability. In addition, I have my Tableau Desktop Specialist certification so this demo project only represents a sliver of what I am capable of developing within the Tableau ecosystem.
 
 Source data:
-The Maven Bike Shop sales data from the Microsoft PL-300 exam study guide. This is the practice data to use for someone that is studying for the Microsoft PowerBI exam. This data contains the 7 files shown below. These files have been modified from their original content slightly to make this project simpler and the sales data was duplicated many times in these files.  
+- the Maven Bike Shop sales data from the Microsoft PL-300 exam study guide. 
+- this is the practice data to use for someone that is studying for the Microsoft PowerBI exam.
+- this data contains the 7 files shown below in the screenshot
+- these files have been modified from their original content slightly to make this project simpler as the sales data was duplicated many times in these files
+- the 2019 & 2020 files are the sales transactions files (detail tables) and the rest of these files are master files (fact tables) 
+- I used Tableau Prep to put together a data flow in order to connect all of these files and then output a single denormalized table to use as input for Tableau 
 
 <img width="203" alt="image" src="https://github.com/garth-c/tableau/assets/138831938/6b58c355-56a4-4914-8e52-c198a359e58d">
-
-The 2019 and 2020 files are the sales transactions files (detail tables) and the rest of these files are master files (fact tables). I used Tableau Prep to put together a data flow in order to connect all of these files and then output a single denormalized table to use as input for Tableau. 
 
 ----------------------------------------------------------------------------------------
 
@@ -31,13 +37,13 @@ The 2019 and 2020 files are the sales transactions files (detail tables) and the
 
 # data import
 
-Using Tableau Prep, the sales transaction files from Maven Cycles for 2019 and 2020 are unioned together to form a new combined transaction table. Then the rest of the tables are joined (inner join) to the new combined transaction table to form a super set to use for this project. 
+Using Tableau Prep, the sales transaction files from Maven Cycles for 2019 and 2020 are unioned (appended) together to form a new combined transaction table. Then the rest of the tables are joined (inner join) to the new combined transaction table to form a denormalized super set to use for this project. 
 
 ![prep_data_flow](https://github.com/garth-c/tableau/assets/138831938/bd086ca2-40f3-4db1-aa75-6de2023abdf7)
 
-Note that Tableau Prep is where a developer would perform much of the data transformation, clean up, reshaping, connecting of tables, etc. Both Tableau Prep and Tableau have the ability to connect to many data sources when the developer has the proper connection credentials. This would include a wide variety of databases, flat files, etc. 
+Note that Tableau Prep is where a developer would perform much of the data transformation, clean up, reshaping, connecting of tables, etc. Both Tableau Prep and Tableau have the ability to connect to many data sources when the developer has the proper connection credentials. This would include a wide variety of databases, web links, flat files, etc. 
 
-The data in Tableau Prep was put into a data flow using a star schema approach. This approach puts a transaction or fact table at the center of the schema and then the other fact tables or master file tables are connected to it through joins. This makes the denormalization process very simple to implement. All of the joins in this project were inner joins and there was no need to set up a snow flake schema as all of the dimension tables would join directly to the fact table. Below is a graphic depiction of a typical star schema:
+The data in Tableau Prep was put into a data flow using a star schema approach. This approach puts a transaction or fact table at the center of the schema and then the other fact tables or master file tables are connected to it through joins. This makes the data prep process very simple to implement. All of the joins in this project were inner joins and there was no need to set up a snow flake schema as all of the dimension tables would join directly to the fact table. Below is a graphic depiction of a typical star schema:
 
 
 ![image](https://github.com/garth-c/tableau/assets/138831938/e1e2614e-08d7-4e52-b558-307766e77294)
@@ -52,13 +58,13 @@ Below is a graphic for a snow flake schema. Since there were no subdimension tab
 ![image](https://github.com/garth-c/tableau/assets/138831938/125ffdbb-998e-4cd5-aedc-c22be6b1cd7c)
 
 
-Lastly, Tableau has the option to process initial sql statments and initial query banding. These are sql statements that run before Tableau starts to process the data and they are able to function as data filters, set parameters, and perform many utility type functions betwen Tableau and the data source (typically a data base).
+Lastly, Tableau has the option to process initial sql statments and initial query banding. These are sql statements that run before Tableau starts to process the data and they are able to function as data filters, set parameters, and perform many utility type functions betwen Tableau and the data source (typically a data base). These methods are an efficient way to push some of the initial data related heavy lifting back onto the source database and let Tableau perform the subsequent processing tasks.
 
 ---------------------------------------------------------------------------------------------------------
 
 # data quality check
 
-The first step with this project is to validate that the sales total and the transaction count that was fed into Tableau match that of the .csv file inputs which they do. The first utility tab in the Tableau workbook sums these amounts shown below. 
+The first step with this project is to validate that the sales total and the transaction count that was fed into Tableau match that of the .csv file inputs which they do. The first utility tab in the Tableau workbook sums these amounts shown below. This is an important data quality step to perform. 
 
 <img width="152" alt="image" src="https://github.com/garth-c/tableau/assets/138831938/8317d215-0133-445b-8a9b-8600f2c94962">
 
@@ -106,7 +112,7 @@ Then I produce an interactive dashboard to drill down into key sales paramters t
   + management would be able to drill into sales totals by manager, country, and product to evaluate sales trends by age group, gender, and sub-category
 <img width="493" alt="image" src="https://github.com/garth-c/tableau/assets/138831938/c754d557-12c8-4e0b-98c9-ade5eda1e237">
 
-In order to produce the above data viz demonstrations, multiple formulas were needed in Tableau as well as a few data type changes. A few examples of Tableau formulas are below.
+In order to produce the above data viz demonstrations, multiple formulas were needed in Tableau as well as a few data type changes. A few examples of Tableau formulas are below. Note that Tableau uses its own proprietary language for calculations (very similar to Measures in PowerBI parlance).
 
 This Tableau formula converts the region number to a region name. The region number originally was imported as a numeric data type and I changed it to character data type in order to use the CASE WHEN function shown below.
 ```
