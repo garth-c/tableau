@@ -53,7 +53,7 @@ Note that all of the joins in the Tableau Prep data flow were inner joins but ot
 
 ![image](https://github.com/garth-c/tableau/assets/138831938/030536f8-65f4-488b-8906-edd3b5e76fa8)
 
-Below is a graphic for a snow flake schema. Since there were no subdimension tables for this project, implementing the snow flake schema was not needed.
+Below is a graphic for a snow flake schema. Since there were no sub-dimension tables for this project, implementing the snow flake schema was not needed.
 
 ![image](https://github.com/garth-c/tableau/assets/138831938/125ffdbb-998e-4cd5-aedc-c22be6b1cd7c)
 
@@ -112,7 +112,7 @@ Then I produce an interactive dashboard to drill down into key sales paramters t
   + management would be able to drill into sales totals by manager, country, and product to evaluate sales trends by age group, gender, and sub-category
 <img width="493" alt="image" src="https://github.com/garth-c/tableau/assets/138831938/c754d557-12c8-4e0b-98c9-ade5eda1e237">
 
-In order to produce the above data viz demonstrations, multiple formulas were needed in Tableau as well as a few data type changes. A few examples of Tableau formulas are below. Note that Tableau uses its own proprietary language for calculations (very similar to Measures in PowerBI parlance).
+In order to produce the above data viz demonstrations, multiple formulas were needed in Tableau as well as a few data type changes. A few examples of Tableau formulas are below. Note that Tableau uses its own proprietary language for calculations (very similar to DAX Measures in PowerBI parlance).
 
 This Tableau formula converts the region number to a region name. The region number originally was imported as a numeric data type and I changed it to character data type in order to use the CASE WHEN function shown below.
 ```
