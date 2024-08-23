@@ -11,8 +11,8 @@ Specifically, I will prepare some insightful data visualizations of customer sal
 Note that Tableau and the related products (Prep, Cloud, Server) are very capable business intelligence tools. This demo project is only a sampling of this capability. In addition, I have my Tableau Desktop Specialist certification so this demo project only represents a sliver of what I am capable of developing within the Tableau ecosystem.
 
 Source data:
-- the Maven Bike Shop sales data from the Microsoft PL-300 exam study guide. 
-- this is the practice data to use for someone that is studying for the Microsoft PowerBI exam.
+- the Maven Bike Shop sales data from the Microsoft PL-300 exam study guide 
+- this is the practice data to use for someone that is studying for the Microsoft PowerBI exam
 - this data contains the 7 files shown below in the screenshot
 - these files have been modified from their original content slightly to make this project simpler as the sales data was duplicated many times in these files
 - the 2019 & 2020 files are the sales transactions files (detail tables) and the rest of these files are master files (fact tables) 
@@ -43,7 +43,7 @@ Using Tableau Prep, the sales transaction files from Maven Cycles for 2019 and 2
 
 Note that Tableau Prep is where a developer would perform much of the data transformation, clean up, reshaping, connecting of tables, etc. Both Tableau Prep and Tableau have the ability to connect to many data sources when the developer has the proper connection credentials. This would include a wide variety of databases, web links, flat files, etc. 
 
-The data in Tableau Prep was put into a data flow using a star schema approach. This approach puts a transaction or fact table at the center of the schema and then the other fact tables or master file tables are connected to it through joins. This makes the data prep process very simple to implement. All of the joins in this project were inner joins and there was no need to set up a snow flake schema as all of the dimension tables would join directly to the fact table. Below is a graphic depiction of a typical star schema:
+The data for this project in Tableau Prep was put into a data flow using a star schema approach. This approach puts a transaction or fact table at the center of the schema and then the other fact tables or master file tables are connected to it through joins. This makes the data prep process very simple to implement. All of the joins in this project were inner joins and there was no need to set up a snow flake schema as all of the dimension tables would join directly to the fact table. Below is a graphic depiction of a typical star schema:
 
 
 ![image](https://github.com/garth-c/tableau/assets/138831938/e1e2614e-08d7-4e52-b558-307766e77294)
